@@ -1,0 +1,363 @@
+server {
+        listen 80;
+	server_name fosa.dev;        
+	root /var/www/fosaweb/public/;
+        index index.php index.html index.htm;
+
+        location / {
+             try_files $uri $uri/ /index.php$is_args$args;
+        }
+
+        location ~ \.php$ {
+                try_files $uri /index.php =404;
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                include fastcgi_params;
+        }
+}
+server {
+        listen 80;
+	server_name tugas.dev;        
+	root /var/www/tugas/public/;
+        index index.php index.html index.htm;
+
+        location / {
+             try_files $uri $uri/ /index.php$is_args$args;
+        }
+
+        location ~ \.php$ {
+                try_files $uri /index.php =404;
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                include fastcgi_params;
+        }
+}
+server {
+        listen 80;
+	server_name nuris.dev;        
+	root /var/www/nurisweb/public/;
+        index index.php index.html index.htm;
+
+        location / {
+		  try_files $uri $uri/ /index.php?$query_string;
+        }
+
+        location ~ \.php$ {
+                try_files $uri /index.php =404;
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                include fastcgi_params;
+        }
+}
+server {
+        listen 80;
+	server_name presensi.dev;        
+	root /var/www/presensi/;
+        index index.php index.html index.htm;
+
+        location / {
+		  try_files $uri $uri/ /index.php?$query_string;
+        }
+
+        location ~ \.php$ {
+                try_files $uri /index.php =404;
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                include fastcgi_params;
+        }
+}
+server {
+        listen 80;
+	server_name portalhukum.dev;        
+	root /var/www/bk/;
+        index index.php index.html index.htm;
+
+        location / {
+		  try_files $uri $uri/ /index.php?$query_string;
+        }
+
+        location ~ \.php$ {
+                try_files $uri /index.php =404;
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                include fastcgi_params;
+        }
+}
+server {
+	client_max_body_size 5M;
+        listen 80;
+	server_name bekasigov.dev;        
+	root /var/www/bekasikab/public/;
+        index index.php index.html index.htm;
+
+        location / {
+		  try_files $uri $uri/ /index.php?$query_string;
+        }
+
+        location ~ \.php$ {
+                try_files $uri /index.php =404;
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                include fastcgi_params;
+        }
+}
+server {
+	listen 80;
+        server_name talentjourney.dev;
+ 
+        root /var/www/GoLifeTalentJourney;
+        index index.html index.php;
+
+	fastcgi_buffers 16 16k; 
+	fastcgi_buffer_size 32k;
+ 
+        # set expiration of assets to MAX for caching
+        location ~* \.(ico|css|js|gif|jpe?g|png)(\?[0-9]+)?$ {
+                expires max;
+                log_not_found off;
+        }
+ 
+        location / {
+                # Check if a file or directory index file exists, else route it to index.php.
+                try_files $uri $uri/ /index.php;
+        }
+ 
+        location ~* \.php$ {
+        	fastcgi_pass unix:/var/run/php5-fpm.sock;
+        	fastcgi_index index.php;
+        	fastcgi_split_path_info ^(.+\.php)(.*)$;
+       		include fastcgi_params;
+        	fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		fastcgi_read_timeout 300; 
+    	}
+	
+}
+server {
+	listen 80;
+        server_name talentjourneyfoo.dev;
+ 
+        root /var/www/_talentjourney;
+        index index.html index.php;
+
+	fastcgi_buffers 16 16k; 
+	fastcgi_buffer_size 32k;
+ 
+        # set expiration of assets to MAX for caching
+        location ~* \.(ico|css|js|gif|jpe?g|png)(\?[0-9]+)?$ {
+                expires max;
+                log_not_found off;
+        }
+ 
+        location / {
+                # Check if a file or directory index file exists, else route it to index.php.
+                try_files $uri $uri/ /index.php;
+        }
+ 
+        location ~* \.php$ {
+        	fastcgi_pass unix:/var/run/php5-fpm.sock;
+        	fastcgi_index index.php;
+        	fastcgi_split_path_info ^(.+\.php)(.*)$;
+       		include fastcgi_params;
+        	fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		fastcgi_read_timeout 300; 
+    	}
+	
+}
+server {
+	listen 80;
+        server_name learning.dev;
+ 
+        root /var/www/fingerprint_fid92/;
+        index index.html index.php;
+ 
+        # set expiration of assets to MAX for caching
+        location ~* \.(ico|css|js|gif|jpe?g|png)(\?[0-9]+)?$ {
+                expires max;
+                log_not_found off;
+        }
+ 
+        location / {
+                # Check if a file or directory index file exists, else route it to index.php.
+                try_files $uri $uri/ /index.php;
+        }
+ 
+        location ~* \.php$ {
+        	fastcgi_pass unix:/var/run/php5-fpm.sock;
+        	fastcgi_index index.php;
+        	fastcgi_split_path_info ^(.+\.php)(.*)$;
+       		include fastcgi_params;
+        	fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		fastcgi_read_timeout 300; 
+    	}
+	
+}
+server {
+	listen 80;
+        server_name servicefp.dev;
+ 
+        root /var/www/service_fp/;
+        index index.html index.php;
+ 
+        # set expiration of assets to MAX for caching
+        location ~* \.(ico|css|js|gif|jpe?g|png)(\?[0-9]+)?$ {
+                expires max;
+                log_not_found off;
+        }
+ 
+        location / {
+                # Check if a file or directory index file exists, else route it to index.php.
+                try_files $uri $uri/ /index.php;
+        }
+ 
+        location ~* \.php$ {
+        	fastcgi_pass unix:/var/run/php5-fpm.sock;
+        	fastcgi_index index.php;
+        	fastcgi_split_path_info ^(.+\.php)(.*)$;
+       		include fastcgi_params;
+        	fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		fastcgi_read_timeout 300; 
+    	}
+	
+}
+server {
+	listen 80;
+        server_name skp.dev;
+ 
+        root /var/www/skp/;
+        index index.html index.php;
+ 
+        # set expiration of assets to MAX for caching
+        location ~* \.(ico|css|js|gif|jpe?g|png)(\?[0-9]+)?$ {
+                expires max;
+                log_not_found off;
+        }
+ 
+        location / {
+                # Check if a file or directory index file exists, else route it to index.php.
+                try_files $uri $uri/ /index.php;
+        }
+ 
+        location ~* \.php$ {
+        	fastcgi_pass unix:/var/run/php5-fpm.sock;
+        	fastcgi_index index.php;
+        	fastcgi_split_path_info ^(.+\.php)(.*)$;
+       		include fastcgi_params;
+        	fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		fastcgi_read_timeout 300; 
+    	}
+	
+}
+server {
+        listen 80;
+	server_name simpel.dev;        
+	root /var/www/kemendikbud/;
+        index index.php index.html index.htm;
+
+        location / {
+		  try_files $uri $uri/ /index.php?$query_string;
+        }
+
+        location ~ \.php$ {
+                try_files $uri /index.php =404;
+                fastcgi_pass unix:/var/run/php5-fpm.sock;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+                include fastcgi_params;
+        }
+}
+server {
+  listen 80;
+    server_name  basic.yii;
+    root   /var/www/basic/web/;
+    set $yii_bootstrap "index.php";
+
+    charset utf-8;
+
+    location / {
+        index  index.html $yii_bootstrap;
+        try_files $uri $uri/ /$yii_bootstrap?$args;
+    }
+
+    location ~ ^/(protected|framework|themes/\w+/views) {
+        deny  all;
+    }
+
+    #avoid processing of calls to unexisting static files by yii
+    location ~ \.(js|css|png|jpg|gif|swf|ico|pdf|mov|fla|zip|rar)$ {
+        try_files $uri =404;
+    }
+
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+    location ~ \.php {
+        fastcgi_split_path_info  ^(.+\.php)(.*)$;
+
+        #let yii catch the calls to unexising PHP files
+        set $fsn /$yii_bootstrap;
+        if (-f $document_root$fastcgi_script_name){
+            set $fsn $fastcgi_script_name;
+        }
+
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        include fastcgi_params;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fsn;
+
+        #PATH_INFO and PATH_TRANSLATED can be omitted, but RFC 3875 specifies them for CGI
+        fastcgi_param  PATH_INFO        $fastcgi_path_info;
+        fastcgi_param  PATH_TRANSLATED  $document_root$fsn;
+    }
+
+    # prevent nginx from serving dotfiles (.htaccess, .svn, .git, etc.)
+    location ~ /\. {
+        deny all;
+        access_log off;
+        log_not_found off;
+    }
+}
+server {
+	listen 80;
+
+	server_name localhost;
+	
+	root /var/www/;
+	index index.php index.html index.htm;
+	
+	if (!-e $request_filename)
+	{
+    		rewrite ^/(.*)$ /index.php?/$1 break;
+    		break;
+	}
+	rewrite themes/.*/(layouts|pages|partials)/.*.htm /index.php break;
+	rewrite uploads/protected/.* /index.php break;
+	rewrite app/.* /index.php break;
+
+	location ~ \.php$ {
+		try_files $uri =404;
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+		fastcgi_pass unix:/var/run/php5-fpm.sock;
+		fastcgi_index index.php;
+        	include fastcgi_params;
+	}
+	location /phpmyadmin { 
+		root /usr/share/; 
+		index index.php index.html index.htm; 
+		
+		location ~ ^/phpmyadmin/(.+\.php)$ { 
+			try_files $uri =404; root /usr/share/; 
+			fastcgi_pass unix:/var/run/php5-fpm.sock; 
+			fastcgi_index index.php;
+			fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+			include fastcgi_params; 
+		}
+		location ~* ^/phpmyadmin/(.+\.(jpg|jpeg|gif|css|png|js|ico|html|xml|txt))$ {
+			root /usr/share/; 
+		} 
+	}
+	location /phpMyAdmin { rewrite ^/* /phpmyadmin last; }
+}
